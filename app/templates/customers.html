@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Customers{% endblock %}
+
+{% block content %}
+    <h1>Customers</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Created By</th>
+                <th>Created When</th>  <!-- New column -->
+                <th>Updated When</th>  <!-- New column -->
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+            <tr>
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.created_by }}</td>
+                <td>{{ customer.created_when }}</td>  <!-- Display created_when -->
+                <td>{{ customer.updated_when }}</td>  <!-- Display updated_when -->
+                <td>
+                    <button onclick="location.href='{{ url_for('app.update_customer', id=customer.id) }}'">Update</button>
+                    {% if session.get('role') == 'admin' %}
+                        <form method="POST" action="{{ url_for('app.delete_customer', id=customer.id) }}" style="display: inline;">
+                            <button type="submit" onclick="return confirmDelete('customer')">Delete</button>
+                        </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <button onclick="location.href='{{ url_for('app.add_customer') }}'">Add Customer</button>
+{% endblock %}

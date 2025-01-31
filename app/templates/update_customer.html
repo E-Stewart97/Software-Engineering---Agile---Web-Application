@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Customer{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Update Customer</h1>
+        <form method="POST" action="{{ url_for('app.update_customer', id=customer.id) }}">
+            <div class="form-group">
+                <label for="name">Customer Name:</label>
+                <input type="text" id="name" name="name" value="{{ customer.name }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Created By: {{ customer.created_by }}</label>
+            </div>
+
+            <div class="button-group">
+                <button type="submit">Update</button>
+                <button type="button" onclick="location.href='{{ url_for('app.customers') }}'">Cancel</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

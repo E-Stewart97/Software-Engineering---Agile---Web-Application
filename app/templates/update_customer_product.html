@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Customer Product{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Update Customer Product</h1>
+        <form method="POST" action="{{ url_for('app.update_customer_product', customer_id=customer_product.customer_id, product_id=customer_product.product_id) }}">
+            <div class="form-group">
+                <label for="customer_id">Customer ID:</label>
+                <input type="number" id="customer_id" name="customer_id" value="{{ customer_product.customer_id }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="product_id">Product ID:</label>
+                <input type="number" id="product_id" name="product_id" value="{{ customer_product.product_id }}" required>
+            </div>
+
+            <div class="button-group">
+                <button type="submit">Update</button>
+                <button type="button" onclick="location.href='{{ url_for('app.customer_product') }}'">Cancel</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

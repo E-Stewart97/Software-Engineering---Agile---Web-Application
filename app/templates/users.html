@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+    <h1>Users</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Job Position</th>
+                <th>Name</th>
+                <th>Created When</th>
+                <th>Updated When</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.role }}</td>
+                <td>{{ user.job_position }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.created_when }}</td> 
+                <td>{{ user.updated_when }}</td>  
+                <td>
+                    <button onclick="location.href='{{ url_for('app.update_user', id=user.id) }}'">Update</button>
+                    {% if session.get('role') == 'admin' and user.id != session.get('user_id') %} 
+                        <form method="POST" action="{{ url_for('app.delete_user', id=user.id) }}" style="display: inline;">
+                            <button type="submit" onclick="return confirmDelete('user')">Delete</button>
+                        </form>
+                    {% elif session.get('role') == 'admin' and user.id == session.get('user_id') %}
+                        <button disabled title="You cannot delete your own account" style="opacity: 0.5;">Delete</button>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <button onclick="location.href='{{ url_for('app.add_user') }}'">Add User</button>
+{% endblock %}

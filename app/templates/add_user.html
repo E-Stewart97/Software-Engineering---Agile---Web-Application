@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Add User{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Add User</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        
+        <form method="POST" action="{{ url_for('app.add_user') }}" id="addUserForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <select id="role" name="role" required>
+                    <option value="">Select a Role</option>
+                    <option value="admin">Admin</option>
+                    <option value="regular">Regular</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="job_position">Job Position:</label>
+                <select id="job_position" name="job_position" required>
+                    <option value="">Select a Position</option>
+                    <option value="Software_Developer">Software Developer</option>
+                    <option value="Product_Manager">Product Manager</option>
+                    <option value="Product_Owner">Product Owner</option>
+                    <option value="QA_Tester">QA Tester</option>
+                    <option value="Customer_Support_Specialist">Customer Support Specialist</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="button-group">
+                <button type="submit">Add User</button>
+                <button type="button" onclick="location.href='{{ url_for('app.users') }}'">Cancel</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

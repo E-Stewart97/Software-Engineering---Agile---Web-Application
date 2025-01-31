@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Update User{% endblock %}
+
+{% block content %}
+    <h1>Update User</h1>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+            {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+    <form method="POST">
+                <label for="username">Username:</label>
+        <input type="text" name="username" value="{{ user.username }}" readonly><br><br>
+        
+                <label for="job_position">Job Position:</label>
+        <select name="job_position" required>
+            {% for position in ['Software_Developer', 'Product_Manager', 'Product_Owner', 'QA_Tester', 'Customer_Support_Specialist'] %}
+                <option value="{{ position }}" {% if position == user.job_position %}selected{% endif %}>
+                    {{ position.replace('_', ' ') }}
+                        </option>
+                    {% endfor %}
+        </select><br><br>
+
+        {% if session.get('role') == 'admin' and session.get('user_id') != user.id %}
+        <label for="role">Role:</label>
+        <select name="role" required>
+            <option value="regular" {% if user.role == 'regular' %}selected{% endif %}>Regular</option>
+            <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+        </select><br><br>
+        {% endif %}
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="{{ user.name }}" required><br><br>
+
+                <button type="submit">Update</button>
+                <button type="button" onclick="location.href='{{ url_for('app.users') }}'">Cancel</button>
+        </form>
+{% endblock %}

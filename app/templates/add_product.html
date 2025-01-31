@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Product{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Add Product</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        
+        <form method="POST" action="{{ url_for('app.add_product') }}" id="addProductForm">
+            <div class="form-group">
+                <label for="name">Product Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="button-group">
+                <button type="submit">Add Product</button>
+                <button type="button" onclick="location.href='{{ url_for('app.products') }}'">Cancel</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

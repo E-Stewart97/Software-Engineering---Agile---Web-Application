@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+    <h1>Products</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Created When</th>  
+                <th>Updated When</th>  
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.created_when }}</td> 
+                <td>{{ product.updated_when }}</td> 
+                <td>
+                    <button onclick="location.href='{{ url_for('app.update_product', id=product.id) }}'">Update</button>
+                    {% if session.get('role') == 'admin' %}
+                        <form method="POST" action="{{ url_for('app.delete_product', id=product.id) }}" style="display: inline;">
+                            <button type="submit" onclick="return confirmDelete('product')">Delete</button>
+                        </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <button onclick="location.href='{{ url_for('app.add_product') }}'">Add Product</button>
+{% endblock %}

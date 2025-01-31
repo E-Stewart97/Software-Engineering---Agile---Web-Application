@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Product{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Update Product</h1>
+        <form method="POST" action="{{ url_for('app.update_product', id=product.id) }}">
+            <div class="form-group">
+                <label for="name">Product Name:</label>
+                <input type="text" id="name" name="name" value="{{ product.name }}" required>
+            </div>
+
+            <div class="button-group">
+                <button type="submit">Update</button>
+                <button type="button" onclick="location.href='{{ url_for('app.products') }}'">Cancel</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

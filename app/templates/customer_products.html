@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Customer Products{% endblock %}
+
+{% block content %}
+    <h1>Customer Products</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>Product ID</th>
+                <th>Created When</th> 
+                <th>Updated When</th>             
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer_product in customer_products %}
+            <tr>
+                <td>{{ customer_product.customer_id }}</td>
+                <td>{{ customer_product.product_id }}</td>
+                <td>{{ customer_product.created_when }}</td>  
+                <td>{{ customer_product.updated_when }}</td>  
+                <td>
+                    <button onclick="location.href='{{ url_for('app.update_customer_product', customer_id=customer_product.customer_id, product_id=customer_product.product_id) }}'">Update</button>
+                    {% if session.get('role') == 'admin' %}
+                        <form method="POST" action="{{ url_for('app.delete_customer_product', customer_id=customer_product.customer_id, product_id=customer_product.product_id) }}" style="display: inline;">
+                            <button type="submit" onclick="return confirmDelete('customer product association')">Delete</button>
+                        </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <button onclick="location.href='{{ url_for('app.add_customer_product') }}'">Add Customer Product</button>
+{% endblock %}
