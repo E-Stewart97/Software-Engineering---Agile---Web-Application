@@ -1,0 +1,8 @@
+Flask
+Flask-SQLAlchemy
+python-dotenv # If you use .env files for configuration
+Werkzeug==2.3.6  # Pin to 2.3.6
+Jinja2
+click==8.1.3 # Pin to 8.1.3
+itsdangerous==2.1.2 # Pin to 2.1.2
+MarkupSafe==2.1.2 # Pin to 2.1.2
