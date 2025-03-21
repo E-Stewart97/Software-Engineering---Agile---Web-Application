@@ -2,6 +2,7 @@ from app import db
 from app.models import Users, Customers, Products, CustomerProduct
 from datetime import datetime
 
+#Initial Data
 # Insert data into the Users table
 users_data = [
     Users(id=1, username='jsmith', password='Kj#9mNpQ2$xL', role='admin', job_position='Software_Developer', name='John Smith', created_when=datetime(2024, 3, 15, 8, 0), updated_when=datetime(2024, 12, 20, 10, 15)), # datetime: Year, month, day, hour, minute, second
