@@ -89,8 +89,51 @@ flask seed-db **This command can be used to repopulate the inital data**
 
 6. **Run the application:**
 python run.py
-Access the application: Open your web browser and go to http://127.0.0.1:5000/.
 
+7. **Access the application:**
+Open your web browser and go to http://127.0.0.1:5000/.
+
+## Usage
+1. **Register a new user:**
+   * Go to the registration page.
+   * Enter a username, password, and confirm password.
+   * Select a role (Admin or Regular).
+   * Click "Register".
+2. **Login:**
+   * Go to the login page.
+   * Enter your username and password.
+   * Click "Login".
+3. **Manage Users:**
+   * Go to the "Users" page.
+   * View, add, update, or delete users.
+   * Ensure you have the appropriate role to perform these actions.
+4. **Manage Customers:**
+   * Go to the "Customers" page.
+   * View, add, update, or delete customers.
+   * Ensure you have the appropriate role to perform these actions.
+5. **Manage Products:**
+   * Go to the "Products" page.
+   * View, add, update, or delete products.
+   * Ensure you have the appropriate role to perform these actions.
+6. **Manage Customer-Product Associations:**
+   * Go to the "Customer-Product" page.
+   * View, add, update, or remove customer-product associations.
+   * Ensure you have the appropriate role to perform these actions.
+
+## Predefined user login accounts
+* Admin: admin/admin
+ username='jsmith', password='Kj#9mNpQ2$xL'
+* Regular: regular/regular
+ username='ajones', password='Dragon5#Flight2023'
+ username='bbrown', password='P@ssw0rd_Keeper!'
+ username='clee', password='Bl@ckC@t9Lives'
+ username='ddavis', password='Secure_P@ss123'
+ username='emiller', password='Nebul@2024Star!'
+ username='fwilson', password='Th3_Qu1ck#Fox'
+ username='ggarcia', password='C0de_M@ster365'
+ username='hmartinez', password='Jump$4Success!'
+ username='irobinson', password='Br1ght_Futur3#'
+More data of these intial user logins can be found in seed_data.py file.
 
 ### Database Schema
 **Users:**
@@ -122,7 +165,6 @@ Access the application: Open your web browser and go to http://127.0.0.1:5000/.
 * created_when
 * updated_when
 
-
 ### Future Improvements
 **Security Enhancements:**
 * Implement password hashing
@@ -131,11 +173,14 @@ Access the application: Open your web browser and go to http://127.0.0.1:5000/.
 * Add OAuth2 authentication
 
 **Feature Additions:**
+* Deletion implementation of CRUD operations
 * Password reset functionality
 * Email verification
 * User profile management
 * Advanced search and filtering
-* Audit logging
+* Audit logging via logging file or logging on Azure  for 'Application logging' and 'Web Server Diagnostics'
+* Data validation as when adding records it's possible to add a record with just a number or letter which reduces data integrity
+* Error handling
 
 **Technical Improvements:**
 * Add tests
