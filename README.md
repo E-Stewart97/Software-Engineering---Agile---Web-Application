@@ -166,6 +166,9 @@ More data of these intial user logins can be found in seed_data.py file.
 * updated_when
 
 ### Future Improvements
+**Known Issues:**
+* Implementation CRUD operation: Deletion
+
 **Security Enhancements:**
 * Implement password hashing
 * Add password complexity requirements
@@ -173,7 +176,18 @@ More data of these intial user logins can be found in seed_data.py file.
 * Add OAuth2 authentication
 
 **Feature Additions:**
-* Deletion implementation of CRUD operations
+* Deletion implementation of CRUD operations to delete records, however only Admin users can delete records
+* Implement role-based access control for different user roles
+* Implement user authentication and authorization
+* Implement user session management
+* Implement password confirmation on registration
+* Implement password reset functionality
+* Implement email verification
+* Implement user profile management
+* Implement advanced search and filtering
+* Implement audit logging
+* Implement data validation
+* Implement error handling
 * Password reset functionality
 * Email verification
 * User profile management
