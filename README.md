@@ -85,7 +85,7 @@ flask db migrate -m "Initial migration"
 flask db upgrade
 
 5. **Seed the database:**
-flask seed-db
+flask seed-db **This command can be used to repopulate the inital data**
 
 6. **Run the application:**
 python run.py

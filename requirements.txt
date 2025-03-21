@@ -1,5 +1,7 @@
 Flask
 Flask-SQLAlchemy
+gunicorn
+Flask-Migrate
 python-dotenv # If you use .env files for configuration
 Werkzeug==2.3.6  # Pin to 2.3.6
 Jinja2

@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import click
 from flask.cli import with_appcontext
+import os
 
 db = SQLAlchemy() # Create db instance that isn't initialised
 migrate = Migrate()
@@ -33,6 +34,12 @@ def seed_db_command():
 def create_app(config_class=Config):
     app = Flask(__name__)  # Create flask app
     app.config.from_object(config_class)
+
+    # Ensure instance folder exists
+    try:
+        os.makedirs(app.instance_path)
+    except OSError:
+        pass
 
     db.init_app(app)
     migrate.init_app(app, db)
