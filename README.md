@@ -168,6 +168,7 @@ More data of these intial user logins can be found in seed_data.py file.
 ### Future Improvements
 **Known Issues:**
 * Implementation CRUD operation: Deletion
+* Password reset functionaltiy does not work as intended
 
 **Security Enhancements:**
 * Implement password hashing
@@ -188,13 +189,14 @@ More data of these intial user logins can be found in seed_data.py file.
 * Implement audit logging
 * Implement data validation
 * Implement error handling
-* Password reset functionality
+* Password reset functionality completion
 * Email verification
 * User profile management
 * Advanced search and filtering
 * Audit logging via logging file or logging on Azure  for 'Application logging' and 'Web Server Diagnostics'
 * Data validation as when adding records it's possible to add a record with just a number or letter which reduces data integrity
 * Error handling
+
 
 **Technical Improvements:**
 * Add tests
